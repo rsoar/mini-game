@@ -1,2 +1,4 @@
-# mini-game
-mini-game desenvolvido utilizando apenas javascript
+### mini-game
+
+O objetivo desse projeto foi exercitar os conceitos de classes presentes na linguagem JavaScript
+
