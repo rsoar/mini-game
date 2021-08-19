@@ -2,14 +2,13 @@ class Game {
     constructor() {
         this.width;
         this.height;
-        this.heart = 3
-        this.difficulty = this.selectDifficulty()
-        this.countdown = document.getElementById('countdown')
+        this.heart = 3;
+        this.difficulty = this.selectDifficulty();
+        this.countdown = document.getElementById('countdown');
     };
     start() {
         this.getWidthHeight();
-        this.selectDifficulty()
-        console.log(this.difficulty)
+        this.selectDifficulty();
     };
     getWidthHeight = () => {
         this.width = window.innerWidth;
@@ -21,40 +20,38 @@ class Game {
         let randomHeight = (Math.floor(Math.random() * height) - 60);
         if (randomWidth < 0) randomWidth = 0;
         if (randomHeight < 50) randomHeight = 50;
-        this.fly(randomWidth, randomHeight)
-        console.log(this.difficulty)
-
+        this.fly(randomWidth, randomHeight);
     };
     fly(randWidth, randHeight) {
-        this.flyVerify()
+        this.flyVerify();
         const container = document.getElementById('container');
         const fly = document.createElement('img');
         fly.src = 'img/mosca-inv.png';
         fly.style.left = randWidth + 'px';
         fly.style.top = randHeight + 'px';
-        fly.style.position = 'absolute'
-        fly.id = 'mosca'
-        fly.onclick = () => fly.remove()
+        fly.style.position = 'absolute';
+        fly.id = 'mosca';
+        fly.onclick = () => fly.remove();
         container.appendChild(fly);
 
     }
     flyVerify() {
         const fly = document.getElementById('mosca')
         if (fly) {
-            fly.remove()
+            fly.remove();
             if (this.heart <= 0) return window.location.href = "../derrota/index.html"
-            document.getElementById('life' + this.heart).src = './img/coracao_vazio.png'
-            this.heart--
+            document.getElementById('life' + this.heart).src = './img/coracao_vazio.png';
+            this.heart--;
         }
     }
     timer() {
         setInterval(() => {
-            this.countdown.innerText -= 1
+            this.countdown.innerText -= 1;
             if (this.countdown.innerText < 0) return window.location.href = "../vitoria/index.html"
         }, 1000);
     };
     selectDifficulty(){
-        let dif = window.location.search
+        let dif = window.location.search;
         dif = dif.replace("?", '')
         console.log(dif)
         if(dif === 'easy') return this.difficulty = 2500
